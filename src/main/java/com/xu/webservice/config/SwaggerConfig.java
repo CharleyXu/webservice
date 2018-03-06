@@ -29,8 +29,8 @@ public class SwaggerConfig {
 				.apiInfo(apiInfo())
 				.select()
 				// 指定controller存放的目录路径
-				.apis(RequestHandlerSelectors.basePackage("com.xu.webservice.controller"))
-//				.paths(PathSelectors.ant("/rest/**"))
+//				.apis(RequestHandlerSelectors.basePackage("com.xu.webservice.controller"))
+				.paths(PathSelectors.ant("/rest/**"))
 				.paths(PathSelectors.any())
 				.build();
 	}

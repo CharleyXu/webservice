@@ -2,7 +2,6 @@ package com.xu.webservice.config;
 
 import com.xu.webservice.service.UserService;
 import com.xu.webservice.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.rmi.RmiServiceExporter;

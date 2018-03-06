@@ -1,3 +1,10 @@
 server:
-  port: 8090
+  port: 8081
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      enabled: true
+
 
