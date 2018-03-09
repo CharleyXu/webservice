@@ -15,14 +15,15 @@ import org.springframework.stereotype.Component;
 public class ValidateUtils {
 	private static final Logger logger = LoggerFactory.getLogger(ValidateUtils.class);
 
-	public boolean validate(Object object){
+	public String validate(Object object) {
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 		Set<ConstraintViolation<Object>> validate = validator.validate(object);
 		int size = validate.size();
 		if (size == 0){
-			return true;
+			return "";
 		}
-		logger.warn(String.format("参数校验失败:%s",validate.iterator().next().getMessage()));
-		return false;
+		String message = validate.iterator().next().getMessage();
+		logger.warn(String.format("参数校验失败:%s", message));
+		return message;
 	}
 }

@@ -21,7 +21,7 @@ public class OrderTest {
 		order.setCreateDate(new Date());
 		order.setCustomer("xiaohu");
 		order.setStatus("1");
-
+//		order.setIp("");
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 		Set<ConstraintViolation<Order>> validate = validator.validate(order);
 		Iterator<ConstraintViolation<Order>> iterator = validate.iterator();

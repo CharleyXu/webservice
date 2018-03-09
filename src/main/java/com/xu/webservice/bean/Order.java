@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -23,6 +24,11 @@ public class Order {
 	private String email;
 	@NotEmpty(message = "address不为空")
 	private String address;
+
+	@NotNull(message = "IP格式不对")
+	@Pattern(regexp = "^(((\\\\d{1,2})|(1\\\\d{2})|(2[2-4]\\\\d)|(25[0-5]))\\\\.){3}((\\\\d{1,2})|(1\\\\d{2})|(2[2-4]\\\\d)|(25[0-5]))$", message = "IP格式不对")
+	private String ip;
+
 	@NotNull(message = "status不为Null")
 	private String status;
 	@NotNull(message = "createDate不为Null")
@@ -79,6 +85,15 @@ public class Order {
 
 	public Order setCreateDate(Date createDate) {
 		this.createDate = createDate;
+		return this;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public Order setIp(String ip) {
+		this.ip = ip;
 		return this;
 	}
 }
