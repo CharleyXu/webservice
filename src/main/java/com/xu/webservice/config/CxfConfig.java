@@ -1,11 +1,10 @@
 package com.xu.webservice.config;
 
 import com.xu.webservice.service.UserService;
-import com.xu.webservice.service.UserServiceImpl;
 import javax.xml.ws.Endpoint;
 import org.apache.cxf.Bus;
-import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.jaxws.EndpointImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,20 +18,16 @@ public class CxfConfig {
 //  public ServletRegistrationBean dispatcherServlet(){
 //    return new ServletRegistrationBean(new CXFServlet(),"/soap/*");
 //  }
+  @Autowired
+  private Bus bus;
 
-  @Bean(name = Bus.DEFAULT_BUS_ID)
-  public SpringBus springBus(){
-    return new SpringBus();
-  }
-
-  @Bean
-  public UserService userService(){
-    return new UserServiceImpl();
-  }
+  @Autowired
+  private UserService userService;
 
   @Bean
   public Endpoint endpoint(){
-    EndpointImpl endpoint = new EndpointImpl(springBus(),userService());
+    EndpointImpl endpoint = new EndpointImpl(bus,userService);
+    //wsdl文档路径  http://localhost:8081/services/user?wsdl
     endpoint.publish("/user");
     return endpoint;
   }
