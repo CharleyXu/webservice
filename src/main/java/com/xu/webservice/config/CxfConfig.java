@@ -14,10 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class CxfConfig {
-//  @Bean
-//  public ServletRegistrationBean dispatcherServlet(){
-//    return new ServletRegistrationBean(new CXFServlet(),"/soap/*");
-//  }
+
   @Autowired
   private Bus bus;
 
@@ -26,10 +23,10 @@ public class CxfConfig {
 
   @Bean
   public Endpoint endpoint(){
-    EndpointImpl endpoint = new EndpointImpl(bus,userService);
-    //wsdl文档路径  http://localhost:8081/services/user?wsdl
-    endpoint.publish("/user");
-    return endpoint;
+		//wsdl文档路径  http://localhost:8081/services/userService?wsdl
+		EndpointImpl endpoint = new EndpointImpl(bus,userService);
+		endpoint.publish("/userService");
+		return endpoint;
   }
 
 }

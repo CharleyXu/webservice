@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 public class UserServiceImpl implements UserService {
 
   @Override
-  public String getName(String userId) {
+  public String getName(Long userId) {
     return "the_name_"+userId;
   }
 
   @Override
-  public User getUser(String userId) {
+  public User getUser(Long userId) {
     User user = new User();
     user.setUserId(userId).setUserName("the_name_"+userId);
     return user;
