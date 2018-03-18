@@ -2,13 +2,22 @@ package com.xu.webservice.persist;
 
 import com.xu.webservice.bean.User;
 import java.util.List;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.lang.Nullable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -32,10 +41,41 @@ public class UserRepositoryTest {
 		Assert.assertEquals(5, userRepository.findAll().size());
 	}
 
+	/**
+	 * 不带查询条件
+	 */
 	@Test
-	public void findAllTest() {
-		List<User> user_name_list = userRepository.findAll(Sort.by(Order.desc("userName")));
-		System.out.println(user_name_list.size());
+	public void findAllNoCriteriaTest() {
+		int page=1,size = 5;
+		Sort sort = new Sort(Direction.DESC,"age","userName");
+		Pageable pageable = PageRequest.of(page, size, sort);
+		Page<User> page1 = userRepository.findAll(pageable);
+		System.out.println("12 "+page1.getSize()+"\n"+page1.getTotalElements());
+	}
+
+	@Test
+	public void findAllCriteriaTest(){
+		int age = 13;
+		int page=1,size = 5;
+		Sort sort = new Sort(Direction.DESC,"age","userName");
+		Pageable pageable = PageRequest.of(page, size, sort);
+
+		userRepository.findAll(
+
+				new Specification<User>() {
+			@Nullable
+			@Override
+			public Predicate toPredicate(Root<User> root, CriteriaQuery<?> criteriaQuery,
+					CriteriaBuilder criteriaBuilder) {
+				Predicate age1 = criteriaBuilder
+						.greaterThanOrEqualTo(root.get("age").as(Integer.class), 13);
+				Predicate userName2 = criteriaBuilder.like(root.get("userName").as(String.class), "02");
+				criteriaQuery.where(criteriaBuilder.and(age1,userName2));
+				return criteriaQuery.getRestriction();
+			}
+		}
+
+		,pageable);
 
 	}
 
