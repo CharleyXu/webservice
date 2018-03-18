@@ -3,3 +3,7 @@
 SpringBoot + Web Service (soap and rest) 实现一个简单的WebService服务项目
 
 另外希望也可以使用REST 和 RMI 的方式提供服务与项目实现数据交互
+
+引入 JPA 
+
+序列化方式比较  jackson  和  Protostuff 的比较

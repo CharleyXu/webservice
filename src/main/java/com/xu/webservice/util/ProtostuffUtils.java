@@ -1,5 +1,10 @@
 package com.xu.webservice.util;
 
+import io.protostuff.LinkedBuffer;
+import io.protostuff.ProtostuffIOUtil;
+import io.protostuff.Schema;
+import io.protostuff.runtime.RuntimeSchema;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.objenesis.Objenesis;
 import org.springframework.objenesis.ObjenesisStd;
@@ -15,7 +20,6 @@ public class ProtostuffUtils {
   private ProtostuffUtils() {
   }
 
-  @SuppressWarnings("unchecked")
   private static <T> Schema<T> getSchema(Class<T> cls) {
     Schema<T> schema = (Schema<T>) cachedSchema.get(cls);
     if (schema == null) {
@@ -27,7 +31,6 @@ public class ProtostuffUtils {
     return schema;
   }
 
-  @SuppressWarnings("unchecked")
   public static <T> byte[] serialize(T obj) {
     Class<T> cls = (Class<T>) obj.getClass();
     LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
@@ -51,5 +54,5 @@ public class ProtostuffUtils {
       throw new IllegalStateException(e.getMessage(), e);
     }
   }
-}
+
 }
