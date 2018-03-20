@@ -37,7 +37,7 @@ public class UserController {
 			@ApiParam(value = "用户名称", defaultValue = "DefaultName")
 			@RequestParam(name = "userName", required = true)
 					String userName) {
-		LOGGER.info(String.format("%f, %s", userId, userName));
+		LOGGER.info(String.format("%d, %s", userId, userName));
 		return new User().setUserId(userId).setUserName(userName);
 	}
 

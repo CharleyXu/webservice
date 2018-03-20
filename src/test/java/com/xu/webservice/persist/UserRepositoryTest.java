@@ -31,7 +31,7 @@ public class UserRepositoryTest {
 	UserRepository userRepository;
 
 	@Test
-	public void UserTest() {
+	public void userTest() {
 		//创建5条记录
 		userRepository.save(new User().setUserName("u01").setAge(11));
 		userRepository.save(new User().setUserName("u02").setAge(12));
