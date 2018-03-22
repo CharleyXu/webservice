@@ -7,3 +7,7 @@ SpringBoot + Web Service (soap and rest) 实现一个简单的WebService服务�
 引入 JPA 
 
 序列化方式比较  jackson  和  Protostuff 的比较
+
+使用 Spring Scheduler实现动态修改定时任务
+
+使用 Guava 包中的 EventBus 进行代码解耦
