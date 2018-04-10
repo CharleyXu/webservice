@@ -3,20 +3,20 @@ package com.xu.webservice.shiro.config;
 import com.xu.webservice.shiro.bean.User;
 import com.xu.webservice.shiro.service.UserService;
 import com.xu.webservice.shiro.util.JWTUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.realm.AuthenticatingRealm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author CharleyXu Created on 2018/4/10.
  */
 public class MyRealm extends AuthenticatingRealm {
-  private static final Logger LOGGER = LogManager.getLogger(MyRealm.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(MyRealm.class);
   @Autowired
   private UserService userService;
 

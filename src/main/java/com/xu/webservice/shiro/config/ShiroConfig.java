@@ -2,6 +2,7 @@ package com.xu.webservice.shiro.config;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.Filter;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
