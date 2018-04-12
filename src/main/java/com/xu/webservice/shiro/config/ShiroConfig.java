@@ -17,7 +17,7 @@ import org.springframework.context.annotation.DependsOn;
 /**
  * @author CharleyXu Created on 2018/4/10.
  */
-@Configuration
+//@Configuration
 public class ShiroConfig {
   @Bean("securityManager")
   public DefaultWebSecurityManager getManager(MyRealm realm) {

@@ -2,6 +2,7 @@ package com.xu.webservice.util;
 
 import com.google.common.base.Stopwatch;
 import com.xu.webservice.bean.User;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.junit.Test;
@@ -14,8 +15,9 @@ public class ProtostuffUtilsTest {
   @Test
   public void serializeTest(){
     Stopwatch stopwatch = Stopwatch.createStarted();
-    User user = new User().setUserId(123L).setUserName("tom").setAge(20).setCreateDate(new Date());
-    System.out.println(user);
+		User user = new User().setUserId(123L).setUserName("tom").setAge(20).setCreateDate(
+				LocalDateTime.now());
+		System.out.println(user);
     byte[] data = ProtostuffUtils.serialize(user);
     User user1 = ProtostuffUtils.deserialize(data, User.class);
     System.out.println(user1+"\n"+stopwatch.elapsed(TimeUnit.MILLISECONDS));
@@ -25,8 +27,9 @@ public class ProtostuffUtilsTest {
   @Test
   public void jacksonTest(){
     Stopwatch stopwatch = Stopwatch.createStarted();
-    User user = new User().setUserId(123L).setUserName("tom").setAge(20).setCreateDate(new Date());
-    System.out.println(user);
+		User user = new User().setUserId(123L).setUserName("tom").setAge(20)
+				.setCreateDate(LocalDateTime.now());
+		System.out.println(user);
     byte[] bytes = SerializationUtils.writeJsonByteValue(user);
     User user1 = SerializationUtils.readJsonValue(bytes, User.class);
     System.out.println(user1+"\n"+stopwatch.elapsed(TimeUnit.MILLISECONDS));
@@ -36,8 +39,9 @@ public class ProtostuffUtilsTest {
   @Test
   public void jdkTest(){
     Stopwatch stopwatch = Stopwatch.createStarted();
-    User user = new User().setUserId(123L).setUserName("tom").setAge(20).setCreateDate(new Date());
-    System.out.println(user);
+		User user = new User().setUserId(123L).setUserName("tom").setAge(20)
+				.setCreateDate(LocalDateTime.now());
+		System.out.println(user);
     byte[] bytes = JDKSerializeUtils.serialize(user);
     User user1= (User)JDKSerializeUtils.deserialize(bytes);
     System.out.println(user1+"\n"+stopwatch.elapsed(TimeUnit.MILLISECONDS));
