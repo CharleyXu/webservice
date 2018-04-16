@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class KaptchaConfig {
-  @Bean(name="captchaProducer")
+  @Bean(name="defaultKaptcha")
   public DefaultKaptcha getDefaultKaptcha(){
     com.google.code.kaptcha.impl.DefaultKaptcha defaultKaptcha = new com.google.code.kaptcha.impl.DefaultKaptcha();
     Properties properties = new Properties();
@@ -26,7 +26,6 @@ public class KaptchaConfig {
     properties.setProperty("kaptcha.textproducer.font.names", "宋体,楷体,微软雅黑");
     Config config = new Config(properties);
     defaultKaptcha.setConfig(config);
-
     return defaultKaptcha;
   }
 }
