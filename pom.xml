@@ -80,8 +80,9 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>24.0-jre</version>
+			<version>21.0</version>
 		</dependency>
+
 		<!-- Jackson序列化 -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
@@ -128,19 +129,6 @@
 			<artifactId>objenesis</artifactId>
 			<version>2.6</version>
 			<scope>test</scope>
-		</dependency>
-		<!-- JWT -->
-		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>1.4.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.3.0</version>
 		</dependency>
 		<!--验证码 -->
 		<!-- https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
@@ -193,6 +181,12 @@
 			<groupId>io.protostuff</groupId>
 			<artifactId>protostuff-core</artifactId>
 			<version>RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.rholder/guava-retrying -->
+		<dependency>
+			<groupId>com.github.rholder</groupId>
+			<artifactId>guava-retrying</artifactId>
+			<version>2.0.0</version>
 		</dependency>
 
 	</dependencies>

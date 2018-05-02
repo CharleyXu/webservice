@@ -2,7 +2,7 @@
 
 SpringBoot + Web Service (soap and rest) 实现一个简单的WebService服务项目
 
-另外希望也可以使用REST 和 RMI 的方式提供服务与项目实现数据交互
+另外希望也可以使用 REST 和 RMI 的方式提供服务与项目实现数据交互
 
 引入 JPA 
 
@@ -11,3 +11,5 @@ SpringBoot + Web Service (soap and rest) 实现一个简单的WebService服务�
 使用 Spring Scheduler实现动态修改定时任务
 
 使用 Guava 包中的 EventBus 进行代码解耦
+
+使用 Guava Retrying 实现优雅的重试机制
