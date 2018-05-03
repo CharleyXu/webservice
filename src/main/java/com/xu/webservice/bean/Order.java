@@ -25,8 +25,8 @@ public class Order {
 	@NotEmpty(message = "address不为空")
 	private String address;
 
-	@NotNull(message = "IP格式不对")
-	@Pattern(regexp = "^(((\\\\d{1,2})|(1\\\\d{2})|(2[2-4]\\\\d)|(25[0-5]))\\\\.){3}((\\\\d{1,2})|(1\\\\d{2})|(2[2-4]\\\\d)|(25[0-5]))$", message = "IP格式不对")
+	@NotNull(message = "IP不为Null")
+	@Pattern(regexp = "^(((\\\\d{1,2})|(1\\\\d{2})|(2[2-4]\\\\d)|(25[0-5]))\\\\.){3}((\\\\d{1,2})|(1\\\\d{2})|(2[2-4]\\\\d)|(25[0-5]))$", message = "IP格式违法")
 	private String ip;
 
 	@NotNull(message = "status不为Null")

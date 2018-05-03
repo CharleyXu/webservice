@@ -10,6 +10,7 @@ import com.github.rholder.retry.StopStrategies;
 import com.github.rholder.retry.WaitStrategies;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.base.Stopwatch;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -33,6 +34,8 @@ public class RetryUtils {
 	 */
 	public static <T> T retry(Callable<T> task, long fixedWaitTime, long timeout,
 			TimeUnit timeUnit, int attemptNumber) {
+		Stopwatch started = Stopwatch.createStarted();
+
 		Retryer<T> retryer = RetryerBuilder
 				.<T>newBuilder()
 				//抛出RunTime异常、Checked异常时都会重试，但是抛出Error不会重试。
